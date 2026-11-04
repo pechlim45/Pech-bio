@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pech Lim Gatluak - Social Entrepreneur, Youth Peace Advocate, Mastercard Foundation Scholar and Founder of REACH.">
+    <meta name="author" content="Pech Lim Gatluak">
+    <title>Pech Lim Gatluak | Leadership, Innovation & Impact</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #101d32;
+            --navy-light: #1a2b45;
+            --gold: #c9a45c;
+            --cream: #f7f6f2;
+            --text: #293548;
+            --muted: #687385;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: rgba(16, 29, 50, .97);
+            padding: 17px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 19px;
+        }
+
+        .navbar-brand span {
+            color: var(--gold);
+        }
+
+        .navbar-nav .nav-link {
+            color: #e0e5ed !important;
+            font-size: 13px;
+            margin-left: 17px;
+            transition: .3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--gold) !important;
+        }
+
+        .hero {
+            min-height: 680px;
+            background: linear-gradient(115deg, #101d32 55%, #1c304b);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 125px 0 85px;
+        }
+
+        .hero-label {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.13;
+            margin: 22px 0;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            color: #d0d7e2;
+            max-width: 590px;
+            font-size: 16px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #101d32;
+            border: 1px solid var(--gold);
+            padding: 13px 25px;
+            font-weight: 700;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+            transition: .3s;
+        }
+
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .btn-outline {
+            color: white;
+            border: 1px solid #8995a6;
+            padding: 13px 25px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 3px;
+            margin-left: 10px;
+            transition: .3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .profile-frame {
+            width: 100%;
+            max-width: 390px;
+            height: 450px;
+            margin: auto;
+            border: 1px solid rgba(201,164,92,.6);
+            padding: 10px;
+            position: relative;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            background: #253852;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: #a6813e;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 4vw, 43px);
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .about {
+            background: var(--cream);
+        }
+
+        .about-highlight {
+            border-left: 3px solid var(--gold);
+            padding: 15px 20px;
+            margin-top: 25px;
+            background: white;
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+        }
+
+        .stat-card {
+            padding: 23px;
+            background: white;
+            border-bottom: 2px solid var(--gold);
+            height: 100%;
+        }
+
+        .stat-card h3 {
+            font-size: 36px;
+            color: var(--navy);
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .dark-section {
+            background: var(--navy);
+            color: white;
+        }
+
+        .dark-section .section-title {
+            color: white;
+        }
+
+        .dark-section .section-text {
+            color: #c4cedb;
+        }
+
+        .timeline {
+            border-left: 2px solid var(--gold);
+            padding-left: 28px;
+            margin-left: 8px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            left: -35px;
+            top: 7px;
+        }
+
+        .timeline-item h4 {
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .timeline-item .year {
+            color: #a6813e;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .impact-card {
+            background: var(--navy-light);
+            padding: 30px;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,.09);
+            transition: .3s;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+        }
+
+        .impact-card i {
+            font-size: 30px;
+            color: var(--gold);
+        }
+
+        .impact-card h4 {
+            color: white;
+            margin: 18px 0 10px;
+            font-size: 22px;
+        }
+
+        .impact-card p {
+            color: #c4cedb;
+            font-size: 14px;
+        }
+
+        .achievement-card {
+            padding: 25px;
+            background: white;
+            border: 1px solid #e8e8e8;
+            height: 100%;
+            transition: .3s;
+        }
+
+        .achievement-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .achievement-card i {
+            color: var(--gold);
+            font-size: 27px;
+        }
+
+        .achievement-card h4 {
+            color: var(--navy);
+            font-size: 19px;
+            margin-top: 15px;
+        }
+
+        .achievement-card p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .quote-section {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 4vw, 37px);
+            color: var(--navy);
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.5;
+        }
+
+        .contact-section {
+            background: var(--navy);
+            color: white;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e7ee;
+            text-decoration: none;
+            margin: 8px 18px 8px 0;
+            font-size: 14px;
+        }
+
+        .contact-link:hover {
+            color: var(--gold);
+        }
+
+        .contact-link i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        footer {
+            background: #0a1424;
+            color: #aab4c2;
+            padding: 25px 0;
+            font-size: 12px;
+        }
+
+        footer span {
+            color: var(--gold);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width: 991px) {
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero p {
+                margin: auto;
+            }
+
+            .profile-frame {
+                margin-top: 50px;
+                max-width: 320px;
+                height: 380px;
+            }
+        }
+
+        @media(max-width: 576px) {
+            .section {
+                padding: 65px 0;
+            }
+
+            .btn-outline {
+                margin: 12px 0 0;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#home">PECH LIM <span>GATLUAK.</span></a>
+
+        <button class="navbar-toggler bg-light" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">My Story</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
+                <li class="nav-item"><a class="nav-link" href="#impact">My Impact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#achievements">Recognition</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="hero-label">Social Entrepreneur | Youth Advocate | Changemaker</div>
+
+                <h1>
+                    Pech Lim<br>
+                    <span>Gatluak.</span>
+                </h1>
+
+                <p>
+                    Turning challenges into opportunities for change.
+                    I am a South Sudanese social entrepreneur, youth peace
+                    advocate and Mastercard Foundation Scholar passionate
+                    about education, technology, innovation and inclusive
+                    economic opportunities for displaced communities.
+                </p>
+
+                <div class="mt-4">
+                    <a href="#about" class="btn-gold">Discover My Story</a>
+                    <a href="#contact" class="btn-outline">Get In Touch</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="profile-frame">
+                    <!-- Add your real portrait at images/pech.jpg -->
+                    <img src="images/pech.jpg"
+                         alt="Portrait of Pech Lim Gatluak"
+                         onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg,#243a58,#101d32)';">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7 reveal">
+                <div class="section-label">My Story</div>
+                <h2 class="section-title">A journey shaped by resilience and purpose.</h2>
+
+                <p class="section-text">
+                    My journey is rooted in Rhino Camp Refugee Settlement
+                    in Uganda, where I have spent more than two decades
+                    navigating the challenges of displacement, education
+                    and limited opportunities.
+                </p>
+
+                <p class="section-text">
+                    After performing well in primary school, I stayed home
+                    for two academic terms without joining secondary school
+                    because of financial challenges. In 2014, Windle
+                    International Uganda selected me for a scholarship
+                    that supported my education from Senior One to Senior Six.
+                </p>
+
+                <p class="section-text">
+                    During the scholarship orientation, I encountered a
+                    computer for the first time in a practical way. I had
+                    heard about computers before, but I had never touched
+                    a keyboard or understood how computers worked.
+                    That experience helped spark my interest in technology.
+                </p>
+
+                <p class="section-text">
+                    After completing secondary school in 2019, I spent
+                    four years without access to further education.
+                    In 2023, I received a Mastercard Foundation Scholarship
+                    to study Software Engineering at USIU-Africa in Kenya.
+                </p>
+
+                <p class="section-text">
+                    Today, I channel my experiences into supporting
+                    refugee and displaced youth to access education,
+                    mentorship, digital skills and opportunities.
+                </p>
+
+                <div class="about-highlight">
+                    "I believe where someone starts should never determine
+                    how far they can go."
+                </div>
+            </div>
+
+            <div class="col-lg-5 reveal">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3>1,050+</h3>
+                            <p>Refugee youth reached through REACH initiatives</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3>17</h3>
+                            <p>REACH volunteers</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3>2023</h3>
+                            <p>Mastercard Foundation Scholarship</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3>2025</h3>
+                            <p>REACH established</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+    <div class="container">
+        <div class="section-label">Academic Journey</div>
+        <h2 class="section-title">Education & Learning</h2>
+        <p class="section-text mb-5">
+            Every opportunity to learn has strengthened my commitment
+            to making education more accessible to others.
+        </p>
+
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="year">2014 – 2019</div>
+                <h4>Secondary Education</h4>
+                <p>
+                    Windle International Uganda scholarship recipient.
+                    Completed secondary education from Senior One
+                    to Senior Six.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2023 – PRESENT</div>
+                <h4>United States International University-Africa</h4>
+                <p>
+                    Mastercard Foundation Scholar studying
+                    Software Engineering in Nairobi, Kenya.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">CONTINUOUS LEARNING</div>
+                <h4>Leadership & Professional Development</h4>
+                <p>
+                    YALI East Africa alumnus, Young Professional
+                    Mentorship Program alumnus and participant in
+                    leadership development initiatives.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section dark-section" id="leadership">
+    <div class="container">
+        <div class="section-label">Leadership & Experience</div>
+        <h2 class="section-title">Building people, partnerships and possibilities.</h2>
+        <p class="section-text mb-5">
+            My leadership experience spans refugee-led initiatives,
+            youth development, social entrepreneurship and community engagement.
+        </p>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-people"></i>
+                    <h4>Founder / Team Leader</h4>
+                    <p>
+                        Refugee Employment Accelerator and Career Hub (REACH),
+                        a refugee-led and youth-led organisation established
+                        in March 2025 in Rhino Camp Refugee Settlement, Uganda.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-globe-africa"></i>
+                    <h4>YALI East Africa</h4>
+                    <p>
+                        Alumnus of the Young African Leaders Initiative
+                        East Africa, with a commitment to leadership
+                        and community development.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-mortarboard"></i>
+                    <h4>Yale Model African Union</h4>
+                    <p>
+                        Ambassador, 2025–2026, supporting engagement
+                        with youth leadership and African development.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-briefcase"></i>
+                    <h4>Former Program Manager</h4>
+                    <p>
+                        Youth Alive Community Organisation (YACOT),
+                        a refugee-led organisation in Rhino Camp.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-megaphone"></i>
+                    <h4>Social Impact & Advocacy</h4>
+                    <p>
+                        Experience in community mobilisation,
+                        youth engagement, communication and
+                        programme coordination.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="impact-card">
+                    <i class="bi bi-lightbulb"></i>
+                    <h4>Social Entrepreneurship</h4>
+                    <p>
+                        Exploring practical, sustainable solutions
+                        that connect innovation, livelihoods and
+                        economic opportunities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section" id="impact">
+    <div class="container">
+        <div class="section-label">My Work & Impact</div>
+        <h2 class="section-title">Creating opportunities beyond myself.</h2>
+        <p class="section-text mb-5">
+            Through REACH and other community initiatives, I work to
+            expand access to learning, mentorship and sustainable
+            livelihood opportunities for refugee and displaced youth.
+        </p>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-laptop"></i>
+                    <h4>Digital Skills Program</h4>
+                    <p>
+                        Promoting digital literacy and access to
+                        technology among refugee youth.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-mortarboard"></i>
+                    <h4>Scholarship Success Accelerator Program</h4>
+                    <p>
+                        Supporting young people through scholarship
+                        guidance, application mentorship and access
+                        to higher education opportunities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-book"></i>
+                    <h4>Bright Minds Reading Program</h4>
+                    <p>
+                        Encouraging a reading culture, knowledge
+                        development and positive mindsets among youth.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-scissors"></i>
+                    <h4>Resilience Tailoring Initiative</h4>
+                    <p>
+                        Supporting practical vocational skills and
+                        livelihood opportunities for refugee youth
+                        and women.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-robot"></i>
+                    <h4>REACH SmartCoach AI</h4>
+                    <p>
+                        An AI companion developed with T7A support
+                        to help refugee women entrepreneurs learn
+                        business skills in their preferred languages.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-recycle"></i>
+                    <h4>Ecorise Enterprise</h4>
+                    <p>
+                        Developing a social enterprise concept that
+                        transforms discarded polythene materials into
+                        solar-powered bags and income opportunities.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="https://rchafrica.com" target="_blank" class="btn-gold">
+                Explore REACH <i class="bi bi-arrow-up-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="section about" id="achievements">
+    <div class="container">
+        <div class="section-label">Recognition & Opportunities</div>
+        <h2 class="section-title">Learning, leading and growing.</h2>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-award"></i>
+                    <h4>Mastercard Foundation Scholar</h4>
+                    <p>
+                        Scholarship recipient studying Software Engineering
+                        at USIU-Africa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-globe"></i>
+                    <h4>Global Climate Summit 2025</h4>
+                    <p>
+                        Delegate engaging in conversations around
+                        climate and sustainable development.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-people"></i>
+                    <h4>YALI East Africa</h4>
+                    <p>
+                        Alumnus of a regional leadership development
+                        initiative for young African leaders.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-lightbulb"></i>
+                    <h4>Ubuntu Lab Institute</h4>
+                    <p>
+                        REACH received a US$2,000 grant through
+                        Cohort 6 in 2025 to support digital skills
+                        training and its digital platform.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-camera"></i>
+                    <h4>DW Akademie</h4>
+                    <p>
+                        REACH received €500 to pilot a digital
+                        storytelling initiative for refugee youth.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="achievement-card">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h4>GenZ Advancement Network U</h4>
+                    <p>
+                        REACH received US$1,500 to support digital
+                        skills learning through automated courses.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PERSONAL PHILOSOPHY -->
+<section class="section quote-section">
+    <div class="container reveal">
+        <div class="section-label">My Philosophy</div>
+        <blockquote>
+            "I do not want my journey to be remembered only
+            for how far I have come, but for how many people
+            I have helped move forward."
+        </blockquote>
+        <p class="mt-4 fw-bold" style="color:#a6813e;">
+            — Pech Lim Gatluak
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="section-label">Let's Connect</div>
+                <h2 class="section-title">Let's build opportunities together.</h2>
+                <p class="section-text">
+                    I welcome conversations, partnerships and collaborations
+                    around youth development, education, refugee inclusion,
+                    technology, entrepreneurship and social innovation.
+                </p>
+
+                <div class="mt-4">
+                    <a class="contact-link"
+                       href="https://www.linkedin.com/in/pech45/"
+                       target="_blank">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+
+                    <a class="contact-link"
+                       href="https://www.facebook.com/pechlim.gatluak.7"
+                       target="_blank">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+
+                    <a class="contact-link"
+                       href="https://rchafrica.com"
+                       target="_blank">
+                        <i class="bi bi-globe"></i> REACH Website
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 mt-5 mt-lg-0">
+                <div style="border:1px solid rgba(201,164,92,.5); padding:35px;">
+                    <h3 style="color:var(--gold);">Pech Lim Gatluak</h3>
+                    <p class="mt-3" style="color:#c4cedb;">
+                        Founder / Team Leader, REACH<br>
+                        Mastercard Foundation Scholar<br>
+                        Social Entrepreneur & Youth Peace Advocate
+                    </p>
+                    <a href="https://www.linkedin.com/in/pech45/"
+                       target="_blank" class="btn-gold mt-3">
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container d-flex flex-wrap justify-content-between gap-2">
+        <p class="mb-0">
+            © <span id="year"></span> Pech Lim Gatluak. All rights reserved.
+        </p>
+        <p class="mb-0">Leadership. Innovation. <span>Impact.</span></p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Automatic copyright year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(element => {
+        observer.observe(element);
+    });
+
+    // Close mobile navigation after clicking a link
+    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            const menu = document.getElementById("navigation");
+            if (menu.classList.contains("show")) {
+                bootstrap.Collapse.getOrCreateInstance(menu).hide();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
