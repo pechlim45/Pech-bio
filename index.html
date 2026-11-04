@@ -183,6 +183,11 @@
         .achievement-card h4 { color: var(--heading); font-size: 19px; margin-top: 15px; }
         .achievement-card p { font-size: 13px; color: var(--muted); }
 
+        .sdg-num { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--gold-dark); line-height: 1.1; }
+        .media-source { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-top: 12px; }
+        .media-link { color: var(--gold-dark); font-size: 13px; font-weight: 700; text-decoration: none; }
+        .media-link:hover { text-decoration: underline; }
+
         /* Filter buttons */
         .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
         .filter-btn {
@@ -265,12 +270,12 @@
 
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ms-auto align-items-lg-center">
-                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">My Story</a></li>
                 <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                 <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
-                <li class="nav-item"><a class="nav-link" href="#impact">My Impact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
                 <li class="nav-item"><a class="nav-link" href="#achievements">Recognition</a></li>
+                <li class="nav-item"><a class="nav-link" href="#vision">Vision</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 <li class="nav-item">
                     <button class="theme-toggle" id="themeToggle" aria-label="Switch light or dark mode">
@@ -358,6 +363,17 @@
                 </p>
 
                 <p class="section-text">
+                    Before founding REACH, I supported two young people in
+                    2023 who went on to secure scholarships at the same
+                    university where I study. That experience strengthened
+                    my belief that reliable information, guidance and
+                    mentorship can change the direction of a young person's
+                    life. In March 2025, I founded REACH to make that
+                    support available to more refugee and underserved
+                    young people.
+                </p>
+
+                <p class="section-text">
                     Today, I channel my experiences into supporting
                     refugee and displaced youth to access education,
                     mentorship, digital skills and opportunities.
@@ -430,6 +446,36 @@
         <div class="section-label">Recognition & Opportunities</div>
         <h2 class="section-title">Learning, leading and growing.</h2>
         <div class="row g-4 mt-2" id="recognitionGrid"></div>
+
+        <div class="section-label" style="margin-top:70px;">In the Media</div>
+        <h2 class="section-title">Sharing refugee voices.</h2>
+        <p class="section-text mb-4">
+            Public platforms have given me the chance to share my experience,
+            amplify refugee voices and show what refugee-led initiatives can do.
+        </p>
+        <div class="row g-4" id="mediaGrid"></div>
+    </div>
+</section>
+
+<!-- VISION -->
+<section class="section" id="vision">
+    <div class="container">
+        <div class="section-label">Vision & Goals</div>
+        <h2 class="section-title">Where REACH is heading.</h2>
+        <p class="section-text mb-5">
+            Impact, to me, means real change in people's lives: a young person
+            who secures a scholarship, a woman who builds a livelihood, a child
+            who learns to read. Over the next 18 months, REACH aims to grow from
+            more than 1,050 young people reached to more than 3,000, through
+            stronger programmes, partnerships and access to digital learning
+            and mentorship.
+        </p>
+
+        <h3 class="mb-4" style="color:var(--heading); font-size:26px;">Sustainable Development Goals</h3>
+        <div class="row g-4 mb-5" id="sdgGrid"></div>
+
+        <h3 class="mb-4" style="color:var(--heading); font-size:26px;">Focus areas</h3>
+        <div class="row g-4" id="focusGrid"></div>
     </div>
 </section>
 
@@ -502,56 +548,75 @@ const PROFILE_IMAGES = ["pech.jpg", "images/pech.jpg", "pech.jpeg", "pech.png", 
 const ROLES = [
     "social entrepreneur.",
     "youth peace advocate.",
+    "scholarship guidance advocate.",
     "Mastercard Foundation Scholar.",
     "software engineering student.",
     "founder of REACH."
 ];
 
 const STATS = [
-    { value: 1050, suffix: "+", label: "Refugee youth reached through REACH initiatives" },
+    { value: 1050, suffix: "+", label: "Refugee youth reached through REACH" },
     { value: 17,   suffix: "",  label: "REACH volunteers" },
-    { value: 2023, suffix: "",  label: "Mastercard Foundation Scholarship", plain: true },
-    { value: 2025, suffix: "",  label: "REACH established", plain: true }
+    { value: 500,  suffix: "+", label: "Scholarship-related requests received" },
+    { value: 18,   suffix: "",  label: "Young people supported by REACH who secured scholarships in 2026" },
+    { value: 4,    suffix: "",  label: "Mentored students who won Mastercard Foundation scholarships" },
+    { value: 3000, suffix: "+", label: "Young people REACH aims to reach in 18 months" }
 ];
 
 const EDUCATION = [
     { year: "2014 – 2019", title: "Secondary Education",
-      text: "Windle International Uganda scholarship recipient. Completed secondary education from Senior One to Senior Six." },
+      text: "After two school terms at home, I received a Windle International Uganda scholarship and completed secondary education from Senior One to Senior Six." },
+    { year: "2019 – 2023", title: "Four years of waiting and preparing",
+      text: "Without funding for university, I spent four years without access to further education or structured skills training, hoping for another opportunity." },
     { year: "2023 – PRESENT", title: "United States International University-Africa",
       text: "Mastercard Foundation Scholar studying Software Engineering in Nairobi, Kenya." },
+    { year: "2024", title: "YALI Expo and Trade Show, Cape Town",
+      text: "Participated in the expo to learn from young leaders and professionals working in different sectors." },
+    { year: "2026", title: "English for Business and Entrepreneurship Hackathon, Arusha",
+      text: "Took part in a hackathon that deepened my understanding of entrepreneurship, innovation and collaboration." },
     { year: "CONTINUOUS LEARNING", title: "Leadership & Professional Development",
-      text: "YALI East Africa alumnus, Young Professional Mentorship Program alumnus and participant in leadership development initiatives." }
+      text: "YALI East Africa alumnus, Young Professional Mentorship Program alumnus, and participant in Shine Leadership International, Oaks and Crown East Africa, United Social Venture and the Transformative Leadership Programme of the Mastercard Foundation Scholars Program." }
 ];
 
 const LEADERSHIP = [
-    { icon: "bi-people", title: "Founder / Team Leader",
-      text: "Refugee Employment Accelerator and Career Hub (REACH), a refugee-led and youth-led organisation established in March 2025 in Rhino Camp Refugee Settlement, Uganda." },
-    { icon: "bi-globe-africa", title: "YALI East Africa",
-      text: "Alumnus of the Young African Leaders Initiative East Africa, with a commitment to leadership and community development." },
+    { icon: "bi-people", title: "Founder / Team Leader, REACH",
+      text: "Founded the Refugee Employment Accelerator and Career Hub in March 2025 in Rhino Camp Refugee Settlement, Uganda. I lead programmes, partnerships and 17 volunteers, and REACH has reached more than 1,050 refugee youth." },
+    { icon: "bi-cash-coin", title: "Resource Mobilisation",
+      text: "Identified opportunities, wrote proposals and secured grants awarded to REACH: Ubuntu Lab Institute (US$2,000), GenZ Advancement Network U (US$1,500) and DW Akademie (€500)." },
+    { icon: "bi-person-heart", title: "Mentor & Scholarship Guide",
+      text: "In 2023 I supported two young people who secured scholarships at USIU-Africa. I have also mentored four students who went on to win Mastercard Foundation scholarships." },
+    { icon: "bi-briefcase", title: "Former Programme Manager, YACOT",
+      text: "Youth Alive Community Organisation, a refugee-led organisation in Rhino Camp. The role built my experience in coordinating programmes and engaging community members." },
+    { icon: "bi-compass", title: "Former Programme Coordinator, College Guide Africa",
+      text: "Coordinated education-related activities and supported access to information about higher education opportunities." },
+    { icon: "bi-megaphone", title: "Community & Humanitarian Experience",
+      text: "UNHCR Interpreter; Community Volunteer, VSO International; Community Facilitator, TPO Uganda; Community Mobiliser, ZOA Uganda; Research Assistant, C4ED Uganda; Data Enumerator, Water Mission Uganda." },
+    { icon: "bi-globe-africa", title: "YALI East Africa & Mentorship",
+      text: "Alumnus of the Young African Leaders Initiative East Africa and of the Young Professional Mentorship Program." },
     { icon: "bi-mortarboard", title: "Yale Model African Union",
       text: "Ambassador, 2025–2026, supporting engagement with youth leadership and African development." },
-    { icon: "bi-briefcase", title: "Former Program Manager",
-      text: "Youth Alive Community Organisation (YACOT), a refugee-led organisation in Rhino Camp." },
-    { icon: "bi-megaphone", title: "Social Impact & Advocacy",
-      text: "Experience in community mobilisation, youth engagement, communication and programme coordination." },
-    { icon: "bi-lightbulb", title: "Social Entrepreneurship",
-      text: "Exploring practical, sustainable solutions that connect innovation, livelihoods and economic opportunities." }
+    { icon: "bi-lightbulb", title: "Leadership & Entrepreneurship Programmes",
+      text: "Shine Leadership International, Oaks and Crown East Africa, United Social Venture and the Transformative Leadership Programme under the Mastercard Foundation Scholars Program." }
 ];
 
 /* category is used by the filter buttons */
 const IMPACT = [
-    { category: "Education", icon: "bi-laptop", title: "Digital Skills Program",
-      text: "Promoting digital literacy and access to technology among refugee youth." },
     { category: "Education", icon: "bi-mortarboard", title: "Scholarship Success Accelerator Program",
-      text: "Supporting young people through scholarship guidance, application mentorship and access to higher education opportunities." },
+      text: "Shares scholarship information, answers enquiries, guides applicants and runs mentorship sessions. REACH has received more than 500 scholarship-related requests, and 18 young people it supported secured scholarships in 2026." },
     { category: "Education", icon: "bi-book", title: "Bright Minds Reading Program",
-      text: "Encouraging a reading culture, knowledge development and positive mindsets among youth." },
-    { category: "Livelihoods", icon: "bi-scissors", title: "Resilience Tailoring Initiative",
-      text: "Supporting practical vocational skills and livelihood opportunities for refugee youth and women." },
+      text: "Promotes reading and literacy among refugee children. Hatma Creative Initiative has donated books and novels to the programme at REACH's local hub." },
+    { category: "Technology", icon: "bi-laptop", title: "Digital Learning & Opportunity Sharing",
+      text: "Uses digital resources, automated courses and opportunity sharing to connect refugee youth with learning and career information. We are also strengthening our local hub with computers, internet and help with online applications." },
     { category: "Technology", icon: "bi-robot", title: "REACH SmartCoach AI",
-      text: "An AI companion developed with T7A support to help refugee women entrepreneurs learn business skills in their preferred languages." },
+      text: "An AI business-learning companion developed with T7A support to help refugee women entrepreneurs learn business skills, including in their preferred languages." },
+    { category: "Technology", icon: "bi-camera-video", title: "Digital Storytelling",
+      text: "A pilot supported by DW Akademie that helps refugee youth tell their own stories, raise community issues and use digital media responsibly." },
+    { category: "Livelihoods", icon: "bi-scissors", title: "Resilience Tailoring Initiative",
+      text: "Tailoring training, mentorship and opportunities for refugee women and young people in Rhino Camp to support income generation and self-employment." },
     { category: "Livelihoods", icon: "bi-recycle", title: "Ecorise Enterprise",
-      text: "Developing a social enterprise concept that transforms discarded polythene materials into solar-powered bags and income opportunities." }
+      text: "Developing a social enterprise concept that transforms discarded polythene materials into solar-powered bags and income opportunities." },
+    { category: "Mentorship", icon: "bi-chat-heart", title: "Entrepreneurship Training & Mentorship",
+      text: "Connects young people with entrepreneurship learning, mentors and professional networks, including engagement with Entrepreneurs Bench and InnovateU." }
 ];
 
 const RECOGNITION = [
@@ -562,17 +627,61 @@ const RECOGNITION = [
     { icon: "bi-people", title: "YALI East Africa",
       text: "Alumnus of a regional leadership development initiative for young African leaders." },
     { icon: "bi-lightbulb", title: "Ubuntu Lab Institute",
-      text: "REACH received a US$2,000 grant through Cohort 6 in 2025 to support digital skills training and its digital platform." },
-    { icon: "bi-camera", title: "DW Akademie",
-      text: "REACH received €500 to pilot a digital storytelling initiative for refugee youth." },
+      text: "REACH received a US$2,000 grant through Cohort 6 in 2025 to support digital skills training and the REACH digital platform." },
     { icon: "bi-graph-up-arrow", title: "GenZ Advancement Network U",
-      text: "REACH received US$1,500 to support digital skills learning through automated courses." }
+      text: "REACH received US$1,500 to support digital skills learning through automated courses." },
+    { icon: "bi-camera", title: "DW Akademie",
+      text: "REACH received €500 to pilot digital storytelling for refugee youth." },
+    { icon: "bi-diagram-3", title: "Partners & Networks",
+      text: "Hatma Creative Initiative, T7A, Entrepreneurs Bench, Ubuntu Lab Institute, AYAN, InnovateU and GenZ Advancement Network U." }
+];
+
+/* Add a link later by filling in url: "https://..." */
+const MEDIA = [
+    { icon: "bi-newspaper", source: "USIU-Africa", url: "",
+      title: "World Refugee Day: Pech Lim Gatluak redefines refugee settlements as spaces of creativity, entrepreneurship and leadership" },
+    { icon: "bi-mic", source: "Youth Have a Voice Podcast", url: "",
+      title: "How Pech Lim Gatluak Empowers Refugee Youth Through Technology",
+      text: "Listen on Apple Podcasts and Listen Notes." },
+    { icon: "bi-stars", source: "Ubuntu Lab Institute", url: "",
+      title: "Leadership journey and REACH highlighted",
+      text: "My work and leadership journey were featured through Ubuntu Lab Institute." }
+];
+
+const SDGS = [
+    { num: "SDG 4",  title: "Quality Education",
+      text: "Scholarship guidance, digital learning, mentorship and the Bright Minds Reading Program." },
+    { num: "SDG 5",  title: "Gender Equality",
+      text: "The Resilience Tailoring Initiative and REACH SmartCoach AI expand skills and opportunities for refugee women and girls." },
+    { num: "SDG 8",  title: "Decent Work and Economic Growth",
+      text: "Central to REACH: digital skills, entrepreneurship training and mentorship that lead towards employment and sustainable livelihoods." },
+    { num: "SDG 9",  title: "Industry, Innovation and Infrastructure",
+      text: "Digital learning, REACH SmartCoach AI and a stronger local digital hub expand access to technology." },
+    { num: "SDG 10", title: "Reduced Inequalities",
+      text: "A refugee-led organisation working to remove barriers to education, technology, mentorship and economic opportunity." }
+];
+
+const FOCUS = [
+    { icon: "bi-mortarboard", title: "Education and scholarships",
+      text: "Reach more students with scholarship information, application guidance and mentorship." },
+    { icon: "bi-pc-display", title: "Digital learning and technology access",
+      text: "Strengthen the REACH local hub in Odobu II, Rhino Camp, with computers, internet and online application support." },
+    { icon: "bi-shop", title: "Entrepreneurship and livelihoods",
+      text: "Grow entrepreneurship learning, REACH SmartCoach AI and the Resilience Tailoring Initiative." },
+    { icon: "bi-book", title: "Reading and literacy",
+      text: "Help children build reading habits and a strong foundation for lifelong learning." },
+    { icon: "bi-person-lines-fill", title: "Mentorship and youth leadership",
+      text: "Connect young people with mentors, professionals and networks." },
+    { icon: "bi-chat-quote", title: "Youth storytelling",
+      text: "Support refugee youth to share their experiences and take part in conversations about solutions." }
 ];
 
 const CONTACTS = [
     { icon: "bi-linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/pech45/" },
     { icon: "bi-facebook", label: "Facebook", url: "https://www.facebook.com/pechlim.gatluak.7" },
-    { icon: "bi-globe", label: "REACH Website", url: "https://rchafrica.com" }
+    { icon: "bi-globe", label: "REACH Website", url: "https://rchafrica.com" },
+    { icon: "bi-linkedin", label: "REACH on LinkedIn", url: "https://ug.linkedin.com/company/reach-uganda" },
+    { icon: "bi-facebook", label: "REACH on Facebook", url: "https://www.facebook.com/reachug" }
 ];
 
 /* =====================================================
@@ -668,6 +777,41 @@ function renderRecognition() {
         </div>`).join("");
 }
 
+function renderMedia() {
+    $("mediaGrid").innerHTML = MEDIA.map(m => `
+        <div class="col-md-6 col-lg-4 reveal">
+            <div class="achievement-card">
+                <i class="bi ${esc(m.icon)}"></i>
+                <div class="media-source">${esc(m.source)}</div>
+                <h4 style="margin-top:6px;">${esc(m.title)}</h4>
+                ${m.text ? `<p>${esc(m.text)}</p>` : ""}
+                ${m.url ? `<a class="media-link" href="${esc(m.url)}" target="_blank" rel="noopener">Read or listen <i class="bi bi-arrow-up-right"></i></a>` : ""}
+            </div>
+        </div>`).join("");
+}
+
+function renderSDGs() {
+    $("sdgGrid").innerHTML = SDGS.map(g => `
+        <div class="col-md-6 col-lg-4 reveal">
+            <div class="achievement-card">
+                <div class="sdg-num">${esc(g.num)}</div>
+                <h4 style="margin-top:8px;">${esc(g.title)}</h4>
+                <p>${esc(g.text)}</p>
+            </div>
+        </div>`).join("");
+}
+
+function renderFocus() {
+    $("focusGrid").innerHTML = FOCUS.map(f => `
+        <div class="col-md-6 col-lg-4 reveal">
+            <div class="achievement-card">
+                <i class="bi ${esc(f.icon)}"></i>
+                <h4>${esc(f.title)}</h4>
+                <p>${esc(f.text)}</p>
+            </div>
+        </div>`).join("");
+}
+
 function renderContacts() {
     $("contactLinks").innerHTML = CONTACTS.map(c => `
         <a class="contact-link" href="${esc(c.url)}" target="_blank" rel="noopener">
@@ -682,6 +826,9 @@ renderFilters();
 renderImpact();
 renderRecognition();
 renderContacts();
+renderMedia();
+renderSDGs();
+renderFocus();
 
 $("year").textContent = new Date().getFullYear();
 
