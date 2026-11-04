@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,13 +7,8 @@
     <meta name="author" content="Pech Lim Gatluak">
     <title>Pech Lim Gatluak | Leadership, Innovation & Impact</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
@@ -22,60 +16,76 @@
             --navy: #101d32;
             --navy-light: #1a2b45;
             --gold: #c9a45c;
-            --cream: #f7f6f2;
+            --gold-dark: #a6813e;
+            --bg: #ffffff;
+            --bg-alt: #f7f6f2;
+            --card: #ffffff;
+            --border: #e8e8e8;
             --text: #293548;
             --muted: #687385;
+            --heading: #101d32;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        html[data-theme="dark"] {
+            --bg: #0c1424;
+            --bg-alt: #111c30;
+            --card: #17233a;
+            --border: rgba(255,255,255,.1);
+            --text: #d5dce8;
+            --muted: #9eabbd;
+            --heading: #f1f3f7;
+            --gold-dark: #d9b872;
         }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 85px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 85px; }
 
         body {
             font-family: 'DM Sans', sans-serif;
             color: var(--text);
-            background: #fff;
+            background: var(--bg);
             line-height: 1.7;
+            transition: background .3s, color .3s;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* Scroll progress bar */
+        #progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0;
+            background: var(--gold); z-index: 2000;
         }
 
+        /* Navbar */
         .navbar {
             background: rgba(16, 29, 50, .97);
             padding: 17px 0;
+            transition: padding .3s, box-shadow .3s;
         }
+        .navbar.scrolled { padding: 10px 0; box-shadow: 0 4px 20px rgba(0,0,0,.25); }
 
-        .navbar-brand {
-            color: white !important;
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 19px;
-        }
-
-        .navbar-brand span {
-            color: var(--gold);
-        }
+        .navbar-brand { color: white !important; font-weight: 700; letter-spacing: 1px; font-size: 19px; }
+        .navbar-brand span { color: var(--gold); }
 
         .navbar-nav .nav-link {
             color: #e0e5ed !important;
             font-size: 13px;
             margin-left: 17px;
             transition: .3s;
+            border-bottom: 2px solid transparent;
         }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active { color: var(--gold) !important; border-bottom-color: var(--gold); }
 
-        .navbar-nav .nav-link:hover {
-            color: var(--gold) !important;
+        .theme-toggle {
+            background: none; border: 1px solid #8995a6; color: #e0e5ed;
+            width: 36px; height: 36px; border-radius: 50%;
+            margin-left: 17px; cursor: pointer; transition: .3s;
         }
+        .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
+        /* Hero */
         .hero {
             min-height: 680px;
             background: linear-gradient(115deg, #101d32 55%, #1c304b);
@@ -84,363 +94,177 @@
             align-items: center;
             padding: 125px 0 85px;
         }
+        .hero-label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+        .hero h1 { font-size: clamp(42px, 6vw, 70px); line-height: 1.13; margin: 22px 0 10px; }
+        .hero h1 span { color: var(--gold); }
 
-        .hero-label {
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+        .typed-line { font-size: 20px; color: #fff; min-height: 34px; margin-bottom: 14px; }
+        .typed-line .typed { color: var(--gold); font-weight: 600; }
+        .cursor { display: inline-block; width: 2px; height: 1.1em; background: var(--gold); margin-left: 3px; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
 
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 70px);
-            line-height: 1.13;
-            margin: 22px 0;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero p {
-            color: #d0d7e2;
-            max-width: 590px;
-            font-size: 16px;
-        }
+        .hero p { color: #d0d7e2; max-width: 590px; font-size: 16px; }
 
         .btn-gold {
-            background: var(--gold);
-            color: #101d32;
-            border: 1px solid var(--gold);
-            padding: 13px 25px;
-            font-weight: 700;
-            border-radius: 3px;
-            text-decoration: none;
-            display: inline-block;
-            transition: .3s;
+            background: var(--gold); color: #101d32; border: 1px solid var(--gold);
+            padding: 13px 25px; font-weight: 700; border-radius: 3px;
+            text-decoration: none; display: inline-block; transition: .3s; cursor: pointer;
         }
-
-        .btn-gold:hover {
-            background: transparent;
-            color: var(--gold);
-        }
+        .btn-gold:hover { background: transparent; color: var(--gold); }
 
         .btn-outline {
-            color: white;
-            border: 1px solid #8995a6;
-            padding: 13px 25px;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 3px;
-            margin-left: 10px;
-            transition: .3s;
+            color: white; border: 1px solid #8995a6; padding: 13px 25px;
+            text-decoration: none; display: inline-block; border-radius: 3px;
+            margin-left: 10px; transition: .3s;
         }
-
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
         .profile-frame {
-            width: 100%;
-            max-width: 390px;
-            height: 450px;
-            margin: auto;
-            border: 1px solid rgba(201,164,92,.6);
-            padding: 10px;
-            position: relative;
+            width: 100%; max-width: 390px; height: 450px; margin: auto;
+            border: 1px solid rgba(201,164,92,.6); padding: 10px; position: relative;
+            background: linear-gradient(145deg,#243a58,#101d32);
+        }
+        .profile-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        .profile-fallback {
+            width: 100%; height: 100%; display: none; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif; font-size: 72px; color: var(--gold);
         }
 
-        .profile-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            background: #253852;
-        }
+        /* Sections */
+        .section { padding: 90px 0; }
+        .section-label { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+        .section-title { font-size: clamp(30px, 4vw, 43px); color: var(--heading); margin-bottom: 20px; }
+        .section-text { color: var(--muted); font-size: 15px; }
 
-        .section {
-            padding: 90px 0;
-        }
-
-        .section-label {
-            color: #a6813e;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-size: clamp(30px, 4vw, 43px);
-            color: var(--navy);
-            margin-bottom: 20px;
-        }
-
-        .section-text {
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        .about {
-            background: var(--cream);
-        }
+        .about { background: var(--bg-alt); }
 
         .about-highlight {
-            border-left: 3px solid var(--gold);
-            padding: 15px 20px;
-            margin-top: 25px;
-            background: white;
-            color: var(--navy);
-            font-family: 'Playfair Display', serif;
-            font-size: 19px;
+            border-left: 3px solid var(--gold); padding: 15px 20px; margin-top: 25px;
+            background: var(--card); color: var(--heading);
+            font-family: 'Playfair Display', serif; font-size: 19px;
         }
 
-        .stat-card {
-            padding: 23px;
-            background: white;
-            border-bottom: 2px solid var(--gold);
-            height: 100%;
-        }
+        .stat-card { padding: 23px; background: var(--card); border-bottom: 2px solid var(--gold); height: 100%; }
+        .stat-card h3 { font-size: 36px; color: var(--heading); }
+        .stat-card p { font-size: 13px; color: var(--muted); margin: 0; }
 
-        .stat-card h3 {
-            font-size: 36px;
-            color: var(--navy);
-        }
+        .dark-section { background: var(--navy); color: white; }
+        .dark-section .section-title { color: white; }
+        .dark-section .section-label { color: var(--gold); }
+        .dark-section .section-text { color: #c4cedb; }
 
-        .stat-card p {
-            font-size: 13px;
-            color: var(--muted);
-            margin: 0;
-        }
-
-        .dark-section {
-            background: var(--navy);
-            color: white;
-        }
-
-        .dark-section .section-title {
-            color: white;
-        }
-
-        .dark-section .section-text {
-            color: #c4cedb;
-        }
-
-        .timeline {
-            border-left: 2px solid var(--gold);
-            padding-left: 28px;
-            margin-left: 8px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 35px;
-        }
-
+        /* Timeline */
+        .timeline { border-left: 2px solid var(--gold); padding-left: 28px; margin-left: 8px; }
+        .timeline-item { position: relative; padding-bottom: 35px; }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--gold);
-            border-radius: 50%;
-            left: -35px;
-            top: 7px;
+            content: ''; position: absolute; width: 12px; height: 12px;
+            background: var(--gold); border-radius: 50%; left: -35px; top: 7px;
         }
+        .timeline-item h4 { font-size: 20px; color: var(--heading); }
+        .timeline-item .year { color: var(--gold-dark); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+        .timeline-item p { color: var(--muted); font-size: 14px; }
 
-        .timeline-item h4 {
-            font-size: 20px;
-            color: var(--navy);
-        }
-
-        .timeline-item .year {
-            color: #a6813e;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .timeline-item p {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
+        /* Cards */
         .impact-card {
-            background: var(--navy-light);
-            padding: 30px;
-            height: 100%;
-            border: 1px solid rgba(255,255,255,.09);
-            transition: .3s;
+            background: var(--navy-light); padding: 30px; height: 100%;
+            border: 1px solid rgba(255,255,255,.09); transition: .3s;
         }
-
-        .impact-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--gold);
-        }
-
-        .impact-card i {
-            font-size: 30px;
-            color: var(--gold);
-        }
-
-        .impact-card h4 {
-            color: white;
-            margin: 18px 0 10px;
-            font-size: 22px;
-        }
-
-        .impact-card p {
-            color: #c4cedb;
-            font-size: 14px;
-        }
+        .impact-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+        .impact-card i { font-size: 30px; color: var(--gold); }
+        .impact-card h4 { color: white; margin: 18px 0 10px; font-size: 22px; }
+        .impact-card p { color: #c4cedb; font-size: 14px; }
 
         .achievement-card {
-            padding: 25px;
-            background: white;
-            border: 1px solid #e8e8e8;
-            height: 100%;
-            transition: .3s;
+            padding: 25px; background: var(--card); border: 1px solid var(--border);
+            height: 100%; transition: .3s;
         }
+        .achievement-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .achievement-card i { color: var(--gold); font-size: 27px; }
+        .achievement-card h4 { color: var(--heading); font-size: 19px; margin-top: 15px; }
+        .achievement-card p { font-size: 13px; color: var(--muted); }
 
-        .achievement-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-4px);
+        /* Filter buttons */
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+        .filter-btn {
+            background: transparent; border: 1px solid var(--border); color: var(--text);
+            padding: 7px 18px; border-radius: 30px; font-size: 13px; cursor: pointer; transition: .3s;
         }
+        .filter-btn:hover { border-color: var(--gold); }
+        .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #101d32; font-weight: 700; }
 
-        .achievement-card i {
-            color: var(--gold);
-            font-size: 27px;
-        }
-
-        .achievement-card h4 {
-            color: var(--navy);
-            font-size: 19px;
-            margin-top: 15px;
-        }
-
-        .achievement-card p {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .quote-section {
-            background: var(--cream);
-            text-align: center;
-        }
-
+        .quote-section { background: var(--bg-alt); text-align: center; }
         .quote-section blockquote {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(24px, 4vw, 37px);
-            color: var(--navy);
-            max-width: 850px;
-            margin: auto;
-            line-height: 1.5;
+            font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 37px);
+            color: var(--heading); max-width: 850px; margin: auto; line-height: 1.5;
         }
 
-        .contact-section {
-            background: var(--navy);
-            color: white;
-        }
-
-        .contact-section .section-title {
-            color: white;
-        }
-
+        /* Contact */
+        .contact-section { background: var(--navy); color: white; }
+        .contact-section .section-title { color: white; }
+        .contact-section .section-label { color: var(--gold); }
+        .contact-section .section-text { color: #c4cedb; }
         .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: #e2e7ee;
-            text-decoration: none;
-            margin: 8px 18px 8px 0;
-            font-size: 14px;
+            display: inline-flex; align-items: center; gap: 12px; color: #e2e7ee;
+            text-decoration: none; margin: 8px 18px 8px 0; font-size: 14px;
         }
+        .contact-link:hover { color: var(--gold); }
+        .contact-link i { color: var(--gold); font-size: 20px; }
 
-        .contact-link:hover {
-            color: var(--gold);
+        footer { background: #0a1424; color: #aab4c2; padding: 25px 0; font-size: 12px; }
+        footer span { color: var(--gold); }
+
+        /* Back to top */
+        #toTop {
+            position: fixed; right: 22px; bottom: 22px; width: 44px; height: 44px;
+            border-radius: 50%; border: 1px solid var(--gold); background: var(--navy);
+            color: var(--gold); font-size: 18px; cursor: pointer; z-index: 1500;
+            opacity: 0; pointer-events: none; transition: .3s;
         }
+        #toTop.show { opacity: 1; pointer-events: auto; }
+        #toTop:hover { background: var(--gold); color: var(--navy); }
 
-        .contact-link i {
-            color: var(--gold);
-            font-size: 20px;
-        }
+        .reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        footer {
-            background: #0a1424;
-            color: #aab4c2;
-            padding: 25px 0;
-            font-size: 12px;
-        }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-        footer span {
-            color: var(--gold);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .cursor { animation: none; }
         }
 
         @media(max-width: 991px) {
-            .navbar-nav .nav-link {
-                margin-left: 0;
-                padding: 10px 0;
-            }
-
-            .hero {
-                text-align: center;
-            }
-
-            .hero p {
-                margin: auto;
-            }
-
-            .profile-frame {
-                margin-top: 50px;
-                max-width: 320px;
-                height: 380px;
-            }
+            .navbar-nav .nav-link { margin-left: 0; padding: 10px 0; }
+            .theme-toggle { margin: 10px 0 0; }
+            .hero { text-align: center; }
+            .hero p { margin: auto; }
+            .profile-frame { margin-top: 50px; max-width: 320px; height: 380px; }
         }
 
         @media(max-width: 576px) {
-            .section {
-                padding: 65px 0;
-            }
-
-            .btn-outline {
-                margin: 12px 0 0;
-            }
-
-            .hero {
-                min-height: auto;
-            }
+            .section { padding: 65px 0; }
+            .btn-outline { margin: 12px 0 0; }
+            .hero { min-height: auto; }
         }
     </style>
 </head>
 
 <body>
+<div id="progress"></div>
 
 <!-- NAVIGATION -->
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="#home">PECH LIM <span>GATLUAK.</span></a>
 
         <button class="navbar-toggler bg-light" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navigation">
+                data-bs-toggle="collapse" data-bs-target="#navigation" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navigation">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">My Story</a></li>
                 <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
@@ -448,6 +272,11 @@
                 <li class="nav-item"><a class="nav-link" href="#impact">My Impact</a></li>
                 <li class="nav-item"><a class="nav-link" href="#achievements">Recognition</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Switch light or dark mode">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
@@ -460,10 +289,11 @@
             <div class="col-lg-7">
                 <div class="hero-label">Social Entrepreneur | Youth Advocate | Changemaker</div>
 
-                <h1>
-                    Pech Lim<br>
-                    <span>Gatluak.</span>
-                </h1>
+                <h1>Pech Lim<br><span>Gatluak.</span></h1>
+
+                <div class="typed-line">
+                    I am a <span class="typed" id="typed"></span><span class="cursor"></span>
+                </div>
 
                 <p>
                     Turning challenges into opportunities for change.
@@ -481,10 +311,8 @@
 
             <div class="col-lg-5">
                 <div class="profile-frame">
-                    <!-- Add your real portrait at images/pech.jpg -->
-                    <img src="images/pech.jpg"
-                         alt="Portrait of Pech Lim Gatluak"
-                         onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(145deg,#243a58,#101d32)';">
+                    <img id="portrait" src="pech.jpg" alt="Portrait of Pech Lim Gatluak">
+                    <div class="profile-fallback" id="portraitFallback">PLG</div>
                 </div>
             </div>
         </div>
@@ -542,32 +370,7 @@
             </div>
 
             <div class="col-lg-5 reveal">
-                <div class="row g-3">
-                    <div class="col-6">
-                        <div class="stat-card">
-                            <h3>1,050+</h3>
-                            <p>Refugee youth reached through REACH initiatives</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-card">
-                            <h3>17</h3>
-                            <p>REACH volunteers</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-card">
-                            <h3>2023</h3>
-                            <p>Mastercard Foundation Scholarship</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="stat-card">
-                            <h3>2025</h3>
-                            <p>REACH established</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="row g-3" id="statsGrid"></div>
             </div>
         </div>
     </div>
@@ -582,37 +385,7 @@
             Every opportunity to learn has strengthened my commitment
             to making education more accessible to others.
         </p>
-
-        <div class="timeline reveal">
-            <div class="timeline-item">
-                <div class="year">2014 – 2019</div>
-                <h4>Secondary Education</h4>
-                <p>
-                    Windle International Uganda scholarship recipient.
-                    Completed secondary education from Senior One
-                    to Senior Six.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="year">2023 – PRESENT</div>
-                <h4>United States International University-Africa</h4>
-                <p>
-                    Mastercard Foundation Scholar studying
-                    Software Engineering in Nairobi, Kenya.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="year">CONTINUOUS LEARNING</div>
-                <h4>Leadership & Professional Development</h4>
-                <p>
-                    YALI East Africa alumnus, Young Professional
-                    Mentorship Program alumnus and participant in
-                    leadership development initiatives.
-                </p>
-            </div>
-        </div>
+        <div class="timeline reveal" id="timeline"></div>
     </div>
 </section>
 
@@ -625,78 +398,7 @@
             My leadership experience spans refugee-led initiatives,
             youth development, social entrepreneurship and community engagement.
         </p>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-people"></i>
-                    <h4>Founder / Team Leader</h4>
-                    <p>
-                        Refugee Employment Accelerator and Career Hub (REACH),
-                        a refugee-led and youth-led organisation established
-                        in March 2025 in Rhino Camp Refugee Settlement, Uganda.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-globe-africa"></i>
-                    <h4>YALI East Africa</h4>
-                    <p>
-                        Alumnus of the Young African Leaders Initiative
-                        East Africa, with a commitment to leadership
-                        and community development.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-mortarboard"></i>
-                    <h4>Yale Model African Union</h4>
-                    <p>
-                        Ambassador, 2025–2026, supporting engagement
-                        with youth leadership and African development.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-briefcase"></i>
-                    <h4>Former Program Manager</h4>
-                    <p>
-                        Youth Alive Community Organisation (YACOT),
-                        a refugee-led organisation in Rhino Camp.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-megaphone"></i>
-                    <h4>Social Impact & Advocacy</h4>
-                    <p>
-                        Experience in community mobilisation,
-                        youth engagement, communication and
-                        programme coordination.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="impact-card">
-                    <i class="bi bi-lightbulb"></i>
-                    <h4>Social Entrepreneurship</h4>
-                    <p>
-                        Exploring practical, sustainable solutions
-                        that connect innovation, livelihoods and
-                        economic opportunities.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <div class="row g-4" id="leadershipGrid"></div>
     </div>
 </section>
 
@@ -705,86 +407,17 @@
     <div class="container">
         <div class="section-label">My Work & Impact</div>
         <h2 class="section-title">Creating opportunities beyond myself.</h2>
-        <p class="section-text mb-5">
+        <p class="section-text mb-4">
             Through REACH and other community initiatives, I work to
             expand access to learning, mentorship and sustainable
             livelihood opportunities for refugee and displaced youth.
         </p>
 
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-laptop"></i>
-                    <h4>Digital Skills Program</h4>
-                    <p>
-                        Promoting digital literacy and access to
-                        technology among refugee youth.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-mortarboard"></i>
-                    <h4>Scholarship Success Accelerator Program</h4>
-                    <p>
-                        Supporting young people through scholarship
-                        guidance, application mentorship and access
-                        to higher education opportunities.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-book"></i>
-                    <h4>Bright Minds Reading Program</h4>
-                    <p>
-                        Encouraging a reading culture, knowledge
-                        development and positive mindsets among youth.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-scissors"></i>
-                    <h4>Resilience Tailoring Initiative</h4>
-                    <p>
-                        Supporting practical vocational skills and
-                        livelihood opportunities for refugee youth
-                        and women.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-robot"></i>
-                    <h4>REACH SmartCoach AI</h4>
-                    <p>
-                        An AI companion developed with T7A support
-                        to help refugee women entrepreneurs learn
-                        business skills in their preferred languages.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-recycle"></i>
-                    <h4>Ecorise Enterprise</h4>
-                    <p>
-                        Developing a social enterprise concept that
-                        transforms discarded polythene materials into
-                        solar-powered bags and income opportunities.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <div class="filter-bar" id="impactFilters"></div>
+        <div class="row g-4" id="impactGrid"></div>
 
         <div class="text-center mt-5">
-            <a href="https://rchafrica.com" target="_blank" class="btn-gold">
+            <a href="https://rchafrica.com" target="_blank" rel="noopener" class="btn-gold">
                 Explore REACH <i class="bi bi-arrow-up-right"></i>
             </a>
         </div>
@@ -796,75 +429,7 @@
     <div class="container">
         <div class="section-label">Recognition & Opportunities</div>
         <h2 class="section-title">Learning, leading and growing.</h2>
-
-        <div class="row g-4 mt-2">
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-award"></i>
-                    <h4>Mastercard Foundation Scholar</h4>
-                    <p>
-                        Scholarship recipient studying Software Engineering
-                        at USIU-Africa.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-globe"></i>
-                    <h4>Global Climate Summit 2025</h4>
-                    <p>
-                        Delegate engaging in conversations around
-                        climate and sustainable development.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-people"></i>
-                    <h4>YALI East Africa</h4>
-                    <p>
-                        Alumnus of a regional leadership development
-                        initiative for young African leaders.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-lightbulb"></i>
-                    <h4>Ubuntu Lab Institute</h4>
-                    <p>
-                        REACH received a US$2,000 grant through
-                        Cohort 6 in 2025 to support digital skills
-                        training and its digital platform.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-camera"></i>
-                    <h4>DW Akademie</h4>
-                    <p>
-                        REACH received €500 to pilot a digital
-                        storytelling initiative for refugee youth.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="achievement-card">
-                    <i class="bi bi-graph-up-arrow"></i>
-                    <h4>GenZ Advancement Network U</h4>
-                    <p>
-                        REACH received US$1,500 to support digital
-                        skills learning through automated courses.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <div class="row g-4 mt-2" id="recognitionGrid"></div>
     </div>
 </section>
 
@@ -877,9 +442,7 @@
             for how far I have come, but for how many people
             I have helped move forward."
         </blockquote>
-        <p class="mt-4 fw-bold" style="color:#a6813e;">
-            — Pech Lim Gatluak
-        </p>
+        <p class="mt-4 fw-bold" style="color:var(--gold-dark);">— Pech Lim Gatluak</p>
     </div>
 </section>
 
@@ -896,25 +459,7 @@
                     technology, entrepreneurship and social innovation.
                 </p>
 
-                <div class="mt-4">
-                    <a class="contact-link"
-                       href="https://www.linkedin.com/in/pech45/"
-                       target="_blank">
-                        <i class="bi bi-linkedin"></i> LinkedIn
-                    </a>
-
-                    <a class="contact-link"
-                       href="https://www.facebook.com/pechlim.gatluak.7"
-                       target="_blank">
-                        <i class="bi bi-facebook"></i> Facebook
-                    </a>
-
-                    <a class="contact-link"
-                       href="https://rchafrica.com"
-                       target="_blank">
-                        <i class="bi bi-globe"></i> REACH Website
-                    </a>
-                </div>
+                <div class="mt-4" id="contactLinks"></div>
             </div>
 
             <div class="col-lg-5 mt-5 mt-lg-0">
@@ -925,8 +470,7 @@
                         Mastercard Foundation Scholar<br>
                         Social Entrepreneur & Youth Peace Advocate
                     </p>
-                    <a href="https://www.linkedin.com/in/pech45/"
-                       target="_blank" class="btn-gold mt-3">
+                    <a href="https://www.linkedin.com/in/pech45/" target="_blank" rel="noopener" class="btn-gold mt-3">
                         Connect on LinkedIn
                     </a>
                 </div>
@@ -938,42 +482,319 @@
 <!-- FOOTER -->
 <footer>
     <div class="container d-flex flex-wrap justify-content-between gap-2">
-        <p class="mb-0">
-            © <span id="year"></span> Pech Lim Gatluak. All rights reserved.
-        </p>
+        <p class="mb-0">© <span id="year"></span> Pech Lim Gatluak. All rights reserved.</p>
         <p class="mb-0">Leadership. Innovation. <span>Impact.</span></p>
     </div>
 </footer>
 
+<button id="toTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Automatic copyright year
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+/* =====================================================
+   EDIT YOUR CONTENT HERE
+   Change the text below and the website updates itself.
+   ===================================================== */
 
-    // Reveal animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.12 });
+const PROFILE_IMAGES = ["pech.jpg", "images/pech.jpg", "pech.jpeg", "pech.png", "Pech.jpg"];
 
-    document.querySelectorAll(".reveal").forEach(element => {
-        observer.observe(element);
+const ROLES = [
+    "social entrepreneur.",
+    "youth peace advocate.",
+    "Mastercard Foundation Scholar.",
+    "software engineering student.",
+    "founder of REACH."
+];
+
+const STATS = [
+    { value: 1050, suffix: "+", label: "Refugee youth reached through REACH initiatives" },
+    { value: 17,   suffix: "",  label: "REACH volunteers" },
+    { value: 2023, suffix: "",  label: "Mastercard Foundation Scholarship", plain: true },
+    { value: 2025, suffix: "",  label: "REACH established", plain: true }
+];
+
+const EDUCATION = [
+    { year: "2014 – 2019", title: "Secondary Education",
+      text: "Windle International Uganda scholarship recipient. Completed secondary education from Senior One to Senior Six." },
+    { year: "2023 – PRESENT", title: "United States International University-Africa",
+      text: "Mastercard Foundation Scholar studying Software Engineering in Nairobi, Kenya." },
+    { year: "CONTINUOUS LEARNING", title: "Leadership & Professional Development",
+      text: "YALI East Africa alumnus, Young Professional Mentorship Program alumnus and participant in leadership development initiatives." }
+];
+
+const LEADERSHIP = [
+    { icon: "bi-people", title: "Founder / Team Leader",
+      text: "Refugee Employment Accelerator and Career Hub (REACH), a refugee-led and youth-led organisation established in March 2025 in Rhino Camp Refugee Settlement, Uganda." },
+    { icon: "bi-globe-africa", title: "YALI East Africa",
+      text: "Alumnus of the Young African Leaders Initiative East Africa, with a commitment to leadership and community development." },
+    { icon: "bi-mortarboard", title: "Yale Model African Union",
+      text: "Ambassador, 2025–2026, supporting engagement with youth leadership and African development." },
+    { icon: "bi-briefcase", title: "Former Program Manager",
+      text: "Youth Alive Community Organisation (YACOT), a refugee-led organisation in Rhino Camp." },
+    { icon: "bi-megaphone", title: "Social Impact & Advocacy",
+      text: "Experience in community mobilisation, youth engagement, communication and programme coordination." },
+    { icon: "bi-lightbulb", title: "Social Entrepreneurship",
+      text: "Exploring practical, sustainable solutions that connect innovation, livelihoods and economic opportunities." }
+];
+
+/* category is used by the filter buttons */
+const IMPACT = [
+    { category: "Education", icon: "bi-laptop", title: "Digital Skills Program",
+      text: "Promoting digital literacy and access to technology among refugee youth." },
+    { category: "Education", icon: "bi-mortarboard", title: "Scholarship Success Accelerator Program",
+      text: "Supporting young people through scholarship guidance, application mentorship and access to higher education opportunities." },
+    { category: "Education", icon: "bi-book", title: "Bright Minds Reading Program",
+      text: "Encouraging a reading culture, knowledge development and positive mindsets among youth." },
+    { category: "Livelihoods", icon: "bi-scissors", title: "Resilience Tailoring Initiative",
+      text: "Supporting practical vocational skills and livelihood opportunities for refugee youth and women." },
+    { category: "Technology", icon: "bi-robot", title: "REACH SmartCoach AI",
+      text: "An AI companion developed with T7A support to help refugee women entrepreneurs learn business skills in their preferred languages." },
+    { category: "Livelihoods", icon: "bi-recycle", title: "Ecorise Enterprise",
+      text: "Developing a social enterprise concept that transforms discarded polythene materials into solar-powered bags and income opportunities." }
+];
+
+const RECOGNITION = [
+    { icon: "bi-award", title: "Mastercard Foundation Scholar",
+      text: "Scholarship recipient studying Software Engineering at USIU-Africa." },
+    { icon: "bi-globe", title: "Global Climate Summit 2025",
+      text: "Delegate engaging in conversations around climate and sustainable development." },
+    { icon: "bi-people", title: "YALI East Africa",
+      text: "Alumnus of a regional leadership development initiative for young African leaders." },
+    { icon: "bi-lightbulb", title: "Ubuntu Lab Institute",
+      text: "REACH received a US$2,000 grant through Cohort 6 in 2025 to support digital skills training and its digital platform." },
+    { icon: "bi-camera", title: "DW Akademie",
+      text: "REACH received €500 to pilot a digital storytelling initiative for refugee youth." },
+    { icon: "bi-graph-up-arrow", title: "GenZ Advancement Network U",
+      text: "REACH received US$1,500 to support digital skills learning through automated courses." }
+];
+
+const CONTACTS = [
+    { icon: "bi-linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/pech45/" },
+    { icon: "bi-facebook", label: "Facebook", url: "https://www.facebook.com/pechlim.gatluak.7" },
+    { icon: "bi-globe", label: "REACH Website", url: "https://rchafrica.com" }
+];
+
+/* =====================================================
+   CODE THAT BUILDS THE PAGE (no need to edit below)
+   ===================================================== */
+
+const $ = (id) => document.getElementById(id);
+
+/* Safe text: stops special characters breaking the page */
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+/* ---------- Profile image with fallbacks ---------- */
+(function loadPortrait() {
+    const img = $("portrait");
+    let i = 0;
+    img.onerror = () => {
+        i++;
+        if (i < PROFILE_IMAGES.length) {
+            img.src = PROFILE_IMAGES[i];
+        } else {
+            img.style.display = "none";
+            $("portraitFallback").style.display = "flex";
+        }
+    };
+    img.src = PROFILE_IMAGES[0];
+})();
+
+/* ---------- Render sections ---------- */
+function renderStats() {
+    $("statsGrid").innerHTML = STATS.map((s, i) => `
+        <div class="col-6">
+            <div class="stat-card">
+                <h3><span class="count" data-target="${s.value}" data-plain="${s.plain ? 1 : 0}">0</span>${esc(s.suffix)}</h3>
+                <p>${esc(s.label)}</p>
+            </div>
+        </div>`).join("");
+}
+
+function renderTimeline() {
+    $("timeline").innerHTML = EDUCATION.map(e => `
+        <div class="timeline-item">
+            <div class="year">${esc(e.year)}</div>
+            <h4>${esc(e.title)}</h4>
+            <p>${esc(e.text)}</p>
+        </div>`).join("");
+}
+
+function renderLeadership() {
+    $("leadershipGrid").innerHTML = LEADERSHIP.map(l => `
+        <div class="col-md-6 col-lg-4 reveal">
+            <div class="impact-card">
+                <i class="bi ${esc(l.icon)}"></i>
+                <h4>${esc(l.title)}</h4>
+                <p>${esc(l.text)}</p>
+            </div>
+        </div>`).join("");
+}
+
+function renderImpact(filter = "All") {
+    const items = IMPACT.filter(p => filter === "All" || p.category === filter);
+    $("impactGrid").innerHTML = items.map(p => `
+        <div class="col-md-6 col-lg-4 reveal visible">
+            <div class="achievement-card">
+                <i class="bi ${esc(p.icon)}"></i>
+                <h4>${esc(p.title)}</h4>
+                <p>${esc(p.text)}</p>
+            </div>
+        </div>`).join("");
+}
+
+function renderFilters() {
+    const cats = ["All", ...new Set(IMPACT.map(p => p.category))];
+    $("impactFilters").innerHTML = cats.map((c, i) =>
+        `<button class="filter-btn ${i === 0 ? "active" : ""}" data-filter="${esc(c)}">${esc(c)}</button>`).join("");
+
+    $("impactFilters").addEventListener("click", (e) => {
+        const btn = e.target.closest(".filter-btn");
+        if (!btn) return;
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderImpact(btn.dataset.filter);
     });
+}
 
-    // Close mobile navigation after clicking a link
-    document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-        link.addEventListener("click", () => {
-            const menu = document.getElementById("navigation");
-            if (menu.classList.contains("show")) {
-                bootstrap.Collapse.getOrCreateInstance(menu).hide();
-            }
-        });
+function renderRecognition() {
+    $("recognitionGrid").innerHTML = RECOGNITION.map(r => `
+        <div class="col-md-6 col-lg-4 reveal">
+            <div class="achievement-card">
+                <i class="bi ${esc(r.icon)}"></i>
+                <h4>${esc(r.title)}</h4>
+                <p>${esc(r.text)}</p>
+            </div>
+        </div>`).join("");
+}
+
+function renderContacts() {
+    $("contactLinks").innerHTML = CONTACTS.map(c => `
+        <a class="contact-link" href="${esc(c.url)}" target="_blank" rel="noopener">
+            <i class="bi ${esc(c.icon)}"></i> ${esc(c.label)}
+        </a>`).join("");
+}
+
+renderStats();
+renderTimeline();
+renderLeadership();
+renderFilters();
+renderImpact();
+renderRecognition();
+renderContacts();
+
+$("year").textContent = new Date().getFullYear();
+
+/* ---------- Reveal on scroll ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+/* ---------- Animated counters ---------- */
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function runCounter(el) {
+    const target = +el.dataset.target;
+    const plain = el.dataset.plain === "1";
+    const fmt = (n) => plain ? String(n) : n.toLocaleString();
+    if (reduceMotion) { el.textContent = fmt(target); return; }
+    const duration = 1600;
+    const start = performance.now();
+    (function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(tick);
+    })(start);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            runCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.6 });
+document.querySelectorAll(".count").forEach(el => counterObserver.observe(el));
+
+/* ---------- Typing effect ---------- */
+(function typing() {
+    const el = $("typed");
+    if (reduceMotion) { el.textContent = ROLES[0]; return; }
+    let r = 0, c = 0, deleting = false;
+    function step() {
+        const word = ROLES[r];
+        el.textContent = word.slice(0, c);
+        let delay = deleting ? 35 : 75;
+        if (!deleting && c === word.length) { deleting = true; delay = 1600; }
+        else if (deleting && c === 0) { deleting = false; r = (r + 1) % ROLES.length; delay = 400; }
+        c += deleting ? -1 : 1;
+        setTimeout(step, delay);
+    }
+    step();
+})();
+
+/* ---------- Dark / light theme ---------- */
+(function theme() {
+    const root = document.documentElement;
+    const icon = $("themeToggle").querySelector("i");
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    const initial = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+    function apply(t) {
+        root.setAttribute("data-theme", t);
+        icon.className = t === "dark" ? "bi bi-sun" : "bi bi-moon-stars";
+    }
+    apply(initial);
+
+    $("themeToggle").addEventListener("click", () => {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        apply(next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+})();
+
+/* ---------- Scroll effects: progress bar, navbar, back-to-top ---------- */
+const nav = $("mainNav"), bar = $("progress"), toTop = $("toTop");
+function onScroll() {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    nav.classList.toggle("scrolled", y > 40);
+    toTop.classList.toggle("show", y > 600);
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* ---------- Highlight the current section in the menu ---------- */
+const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id));
+        }
+    });
+}, { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll("header[id], section[id]").forEach(s => sectionObserver.observe(s));
+
+/* ---------- Close mobile menu after clicking a link ---------- */
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        const menu = $("navigation");
+        if (menu.classList.contains("show")) {
+            bootstrap.Collapse.getOrCreateInstance(menu).hide();
+        }
+    });
+});
 </script>
 
 </body>
